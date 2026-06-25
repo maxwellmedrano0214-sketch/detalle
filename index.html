@@ -8,7 +8,7 @@
         * {
             box-sizing: border-box;
         }
-        /* Estilos Generales y Fondo Inicial */
+
         body {
             margin: 0;
             padding: 0;
@@ -25,12 +25,10 @@
             transition: background-color 1.5s ease;
         }
 
-        /* Cuando se abre el regalo, todo pasa a negro absoluto */
         body.oscuro {
             background-color: #000000 !important;
         }
 
-        /* Contenedor de las pantallas (Card) */
         .card {
             background-color: rgba(255, 255, 255, 0.4);
             padding: 40px;
@@ -43,7 +41,6 @@
             transition: opacity 1s ease, transform 1s ease;
         }
 
-        /* Desvanecer tarjeta */
         .card.fade-out {
             opacity: 0;
             transform: scale(0.9);
@@ -58,7 +55,6 @@
             font-weight: bold;
         }
 
-        /* Botones iniciales */
         .btn-container {
             display: flex;
             justify-content: center;
@@ -90,12 +86,10 @@
             right: 50px;
         }
 
-        /* Ocultar elementos */
         .hidden {
             display: none !important;
         }
 
-        /* Estilos Pantalla de Éxito */
         .success-screen h1 {
             color: #d63384;
             font-size: 2.5rem;
@@ -116,10 +110,9 @@
             transition: all 0.3s ease;
         }
 
-        /* --- CONTENEDOR DE LA FLOR EN LA OSCURIDAD --- */
         #flor-magica {
             position: absolute;
-            top: 45%; /* Subido un pelín para dejar espacio al mensaje abajo */
+            top: 45%; 
             left: 50%;
             transform: translate(-50%, -50%);
             width: 300px;
@@ -128,13 +121,11 @@
             z-index: 50;
         }
 
-        /* Animación SVG Tulipán / Rosa */
         .svg-flor {
             width: 100%;
             height: 100%;
         }
 
-        /* Animación del Tallo (crece desde abajo) */
         .tallo-anim {
             stroke-dasharray: 400;
             stroke-dashoffset: 400;
@@ -142,7 +133,6 @@
             animation-delay: 0.5s;
         }
 
-        /* Animación de las Hojas */
         .hoja-anim {
             transform: scale(0);
             transform-origin: center;
@@ -151,7 +141,6 @@
         .hoja-1 { transform-origin: 130px 330px; animation-delay: 2s; }
         .hoja-2 { transform-origin: 170px 260px; animation-delay: 2.5s; }
 
-        /* Animación de los Pétalos del Tulipán Hermoso */
         .petalo-tulipan {
             transform: scale(0);
             transform-origin: 150px 180px;
@@ -163,7 +152,6 @@
         .p-der { animation-delay: 3.7s; transform-origin: 170px 180px; }
         .p-frente { animation-delay: 4.1s; }
 
-        /* Destellos mágicos */
         .brillo {
             opacity: 0;
             animation: titilar 2s ease-in-out infinite alternate;
@@ -172,7 +160,6 @@
         .b2 { animation-delay: 5.5s; }
         .b3 { animation-delay: 6s; }
 
-        /* Mensaje final sutil abajo */
         .mensaje-final {
             position: absolute;
             bottom: 8%;
@@ -193,7 +180,6 @@
             opacity: 1;
         }
 
-        /* keyframes */
         @keyframes crecerTallo {
             to { stroke-dashoffset: 0; }
         }
@@ -216,7 +202,6 @@
 </head>
 <body>
 
-    <!-- PANTALLA PRINCIPAL (PREGUNTA) -->
     <div id="p-pregunta" class="card">
         <h1>¿Si me quieres? </h1>
         <div class="btn-container">
@@ -225,37 +210,31 @@
         </div>
     </div>
 
-    <!-- PANTALLA DE ÉXITO -->
     <div id="p-exito" class="card hidden success-screen">
         <h1>ÑEJEJE LO SABIA </h1>
         <button id="btn-abrir-regalo" class="btn-regalo"> Toca para ver tu regalo</button>
     </div>
 
-    <!-- CONTENEDOR EXCLUSIVO PARA LA FLOR (Se activa en la oscuridad) -->
     <div id="flor-magica">
         <svg class="svg-flor" viewBox="0 0 300 500" fill="none" xmlns="http://www.w3.org/2000/svg">
             <!-- Tallo elegante -->
             <path class="tallo-anim" d="M150,450 Q140,300 150,180" stroke="#2d6a4f" stroke-width="7" stroke-linecap="round"/>
             
-            <!-- Hojas verdes estilizadas -->
             <path class="hoja-anim hoja-1" d="M145,330 Q90,300 110,240 Q130,280 146,310" fill="#40916c" />
             <path class="hoja-anim hoja-2" d="M153,270 Q210,250 190,180 Q170,220 152,250" fill="#40916c" />
             
-            <!-- CAPULLO DE TULIPÁN ELEGANTE -->
             <path class="petalo-tulipan p-centro" d="M150,80 C110,80 110,180 150,180 C190,180 190,80 150,80 Z" fill="#9d0208" />
             <path class="petalo-tulipan p-izq" d="M140,90 C95,100 110,180 150,180 C120,150 120,110 140,90 Z" fill="#d00000" />
             <path class="petalo-tulipan p-der" d="M160,90 C205,100 190,180 150,180 C180,150 180,110 160,90 Z" fill="#dc2f02" />
             <path class="petalo-tulipan p-frente" d="M150,100 C120,95 115,180 150,180 C185,180 180,95 150,100 Z" fill="#e85d04" />
             <path class="petalo-tulipan p-frente" d="M150,105 C130,102 125,175 150,175 C175,175 170,102 150,105 Z" fill="#f48c06" />
 
-            <!-- Destellos / Brillos mágicos -->
             <circle class="brillo b1" cx="100" cy="120" r="3" fill="#fff" />
             <circle class="brillo b2" cx="210" cy="140" r="4" fill="#ffea00" />
             <circle class="brillo b3" cx="150" cy="60" r="2.5" fill="#fff" />
         </svg>
     </div>
 
-    <!-- MENSAJE FINAL OCULTO -->
     <div id="mensaje-final" class="mensaje-final">
         "El corazón tiene razones que la razón no entiende" -Blaise Pascal
     </div>
@@ -304,10 +283,8 @@
             setTimeout(() => {
                 pExito.classList.add('hidden');
                 
-                // Mostrar la flor
                 florMagica.style.display = 'block';
                 
-                // Mostrar el mini mensaje de texto sutil 4.5 segundos después
                 setTimeout(() => {
                     document.getElementById('mensaje-final').classList.add('visible');
                 }, 4500);
